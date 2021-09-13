@@ -1,139 +1,298 @@
-# dactl
-dactl is a fast, modern and configurable [Jekyll](http://jekyllrb.com/) theme with some tricks up it's sleeve. It has a live theme switcher and it's main blog layout display prominent hero images for posts with colored overlays and nice animations.
+# Type Theme
 
-![light theme](uploads/screenshot_desktop_light.jpg)
-![dark theme](uploads/screenshot_desktop_dark.jpg)
+![Default Type Theme blog](https://user-images.githubusercontent.com/816965/30518919-d5978024-9bcd-11e7-81b3-3dd07e99a1f9.png)
 
-## Features
-Though minimalistic-looking by nature, dactl is easily configurable and includes quite a lot of niceties:
+A free and open-source [Jekyll](https://jekyllrb.com) theme. Great for blogs and easy to customize.
 
-Main features:
-* Customizable blog layout - choose how your posts will be displayed
-* Light/Dark live theme switcher
-* Inline footnotes using [Barefoot](https://github.com/philgruneich/barefoot)
-* [IcoMoon](https://icomoon.io/) custom icon set (~4kb)
-* Typography and components size set in `rem` and `em` which makes them easily scalable
-* Responsive design
-
-Jekyll-specific features:
-* Pagination (default: 5 posts per page)
-* Fully compatible with Jekyll 3.x and GitHub Pages
-* SEO optimized
-* [Google Analytics](https://www.google.com/analytics/) support
-* [Disqus](https://disqus.com/) comments support
-* Syntax highlighter using [Rouge](https://github.com/jneen/rouge) with numbered code lines
-
-Other features:
-* Archive page
-* About page
-* Tags functionality and tags pages
-* Link posts functionality
-
-Some of the features listed above can be easily configured or disabled by you.
-
-## Information about dactl
-At it's core, dactl is a forked version of [daktilo](https://github.com/kronik3r/daktilo) but it has been almost entirely rewritten from scratch.  
-I have just started my journey in the world of web development, learning new things on the way.  
-Looking for a way to put my newly acquired skills to test I found Jekyll and I quickly realized that it's going to be a good learning experience since I don't like building 'dummy' projects.  
-I've built this theme as a way to develop my skills further.
-
-You can find credits at the bottom of this Readme file.  
-**All** feedback is welcome, both positive and negative.
-
-## Installation
-### Running locally
-Assuming you've got Jekyll [installed](https://jekyllrb.com/docs/installation/), clone or download this repo, `cd` to wherever you've put `dactl` folder and run `jekyll -s'`
-
-### Hosting on GitHub
-Fork this repo and rename it to `yourusername.github.io`... and that's it!  
-Your new dactl-themed Jekyll blog should be up and running at yourusername.github.io.  
+[Demo](https://rohanchandra.github.io/type-theme/)
 
 ## Usage
-### Slight warning
-dactl relies heavily on modern CSS properties such as [mix-blend-mode](http://www.w3.org/TR/compositing-1/#mix-blend-mode), [-webkit-filter](http://www.w3.org/TR/filter-effects-1/) and [css variables](https://drafts.csswg.org/css-variables/) so it may not work properly on older browsers.  
-It was tested with and works fully on webkit-powered browsers - Safari, Chrome, Vivaldi.
 
-### Layout configurations
-By default dactl uses blog layout which you can see below or check for yourself in the live version.
+1. Fork and clone the [Type Theme repo](https://github.com/rohanchandra/type-theme): `git clone https://github.com/rohanchandra/type-theme`
+2. [Install Jekyll](https://jekyllrb.com/docs/installation/): `gem install jekyll`
+3. Install the theme's dependencies: `bundle install`
+4. Customize the theme (see below)
+5. Run the Jekyll server: `jekyll serve`
 
-Main blog layout displays 5 posts. Each post has a heading contained in a medium-sized tile - with an color overlay over the background image. You need to set the image and color of the overlay in post's YAML front matter.
+## Customizing Type Theme
 
-If you don't want to use images for post headings you can easily configure the layout to you needs by changing settings located in `configure.yml` file, both post and blog layout will adapt accordingly.
+Open `_config.yml` in a text editor to change most of the blog's settings.
 
-Options include:
-* Use or don't use post heading images (Blog & Post)
-* Show full post content or post excerpts (Blog)
-* Show post titles only (Blog)
+If a variable in this document is marked as "optional", disable the feature by removing all text from the variable. For example, to prevent the avatar from rendering in the header, the avatar line should read:
 
-## Additional information about some features
-### Hero images and blog layout
-Liquid 'script' which is used to append correct hero image and overlay color as set in post YAML Front matter was written by me and while it's really basic it functions properly.  
-You can read more about it and see the code in `include/utils/hero.html`.
+```yml
+theme:
+  title: Type Theme
+  avatar:
+  gravatar:
+```
 
-### Theme switcher
-Theme switcher is made in vanilla Javascript and works using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables). Values (colors) specified for each variable are injected into `:root` on every page load.  
-User theme choice is saved in browser's [Local Storage](https://www.w3schools.com/html/html5_webstorage.asp) and is persistent through sessions.
+Notice the avatar variable is left intentionally blank.
 
-You can edit the colors of both Light and Dark themes in `themeswitcher.js` file found in `_assets/js/`.
+Below is a summary of the configuration options in Type Theme.
 
-### Inline Barefoot footnotes
-dactl uses [Barefoot](https://github.com/philgruneich/barefoot) plugin to create nice looking inline footnotes from those generated by [kramdown](https://kramdown.gettalong.org/), daktl's markdown processor.
+### Site configuration
+The most common configurations, included here for guidance, are:
 
-Barefoot description (from project's page):
->[Barefoot](https://github.com/philgruneich/barefoot) is a lightweight [Bigfoot.js](https://github.com/lemonmade/bigfoot) alternative written in vanilla Javascript to create beautiful inline footnotes.  
-Barefoot grabs the common markup used for footnotes on the web, mostly generated by Markdown processors, and transform it into beautiful and meaningful footnotes.
+Jekyll website *without* a subpath (such as a GitHub Pages website for a given username):
 
-### CSS
-CSS is built by via Jekyll's SASS compiler. Source partial SASS files are located in `_sass` folder, included into `main.scss`, and compile to `main.css`.
+```yml
+# SITE CONFIGURATION
+baseurl: ""
+url: "https://username.github.io"
+```
 
-### Additional pages
-#### Archive page
-Archive page displays all of your posts grouped by month. Under this page's title you'll find a Searchbox which is hooked up to DuckDuckGo's `:site` search and will open the results in a new tab.  
-You need to provide your blog's web address in `search_path` field found in `_config.yml` for it to work.
-#### About page
-About page displays your photo under the title (set in `config.yml`) and the content of about.md.
-#### Tags & Tags Pages
-Tags and tag pages are supported by using Jekyll's native collections functionality.  
+Jekyll website *with* subpath (like the Type Theme demo page):
 
-## Even more info
-### Rems, font-size and scaling
-dactl is built almost entirely with `rem`s (instead of pixels). `rem`s are like `em`s, but instead of building on the immediate parent's font-size, they build on the root element, `<html>`.
+```yml
+# SITE CONFIGURATION
+baseurl: "/sub-directory"
+url: "https://username.github.io/"
+```
 
-By default, dactl uses the following:
-~~~
-html {
-  font-size: 20px;
-  line-height: 1.6;
-}
-@media (max-width: 48rem) {
-  html {
-    font-size: 18px;
-  }
-}
-~~~
-To easily scale your site's typography and components, simply customize the base font-sizes found in `_sass/variables.scss` file.
+Please configure this in `_config.yml` before using the theme.
 
-(Lifted from [here](https://github.com/poole/poole#rems-font-size-and-scaling))
+### Meta
 
-## Credits
-### Resources used
-- [IcoMoon.io](https://icomoon.io/)
-- [Normalize.css](https://github.com/necolas/normalize.css) - Nicolas Gallagher
-- [Theme switcher](https://www.fdp.io/blog/2016/11/08/theming-via-css-properties/) - Fernando Paredes
-- [Barefoot](https://github.com/philgruneich/barefoot) - Philip Gruneich
-- [The Noun Project](https://thenounproject.com/) - Icon used as dactl's logo - [Artem Kovyazin](https://thenounproject.com/term/raisin/446158), icon used as 'avatar' in About [Drishya](https://thenounproject.com/term/profile/963272)
+Meta variables hold basic information about your Jekyll site which will be used throughout the site and as meta properties for search engines, browsers, and the site's RSS feed.
 
-### Inspiration and thoughtful code-jacking
-Inspiration and bits of things listed below are present inside dactl's code:
-- [Daktilo](https://github.com/kronik3r/daktilo) - dactl is based on Daktilo and inherits it's one-column layout.
-- [Hydejack](https://github.com/qwtel/hydejack/) - I've learned a lot about Jekyll when I took apart [@qwtel](https://github.com/qwtel/)'s excellent fork of [Hyde](https://github.com/poole/hyde) theme. I embraced his more partials = everything is easier to edit policy. Hydejack theme gave me an idea on how to create hero images liquid scripting, loading google fonts and using rem's/em's and more.
-- [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) - This guy makes awesome themes and writes a lot about Jekyll and it's more obscure use cases on his blog, [Made Mistakes](https://mademistakes.com). Looking through his theme's code - Minimal Mistakes in particular - gave me lot of information about how to build a robust theme and how to make it configurable within `_config.yml`
-- [Trophy](https://github.com/thomasvaeth/trophy-jekyll) - Link border slide animation SASS mixin which I slightly modified to be able to easily change the direction of the animation.
-- Various blog posts about Jekyll and [Stackoverflow](https://www.stackoverflow.com) posts with useful [Liquid](https://github.com/Shopify/liquid) snippets.
+Change these variables in `_config.yml`:
+
+| Variable    | Example                          | Description                                                                                                                    | Optional |
+| ----------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| title       | My Jekyll Blog                   | Name of website                                                                                                                | Yes      |
+| avatar      | assets/img/avatar.png            | Path of avatar image, to be displayed in the theme's header                                                                    | Yes      |
+| gravatar    | f9879d71855b5ff21e4963273a886bfc | [MD5 hash of your email address](https://secure.gravatar.com/site/implement/hash/) to load your Gravatar in the theme's header | Yes      |
+| description | My blog posts                    | Short description, primarily used by search engines                                                                            | Yes      |
+
+### Header and footer text
+
+Change these variables in `_config.yml`:
+
+
+| Variable                  | Example                             | Description                                                             | Optional |
+| ------------------------- | ----------------------------------- | ----------------------------------------------------------------------- | -------- |
+| header_text               | Welcome to my Jekyll blog           | HTML (shown below the navigation) with a background colour for emphasis | Yes      |
+| header_text_feature_image | assets/img/sample_feature_img_3.png | Background image for the header text                                    | Yes      |
+| footer_text               | Copyright 2014                      | HTML (shown at end of the site) with lighter text                       | Yes      |
+
+### Icons
+
+Add your username on selected websites in the icon section of the `_config.yml` file to display the site's icon from [Font Awesome](https://fortawesome.github.io/Font-Awesome/) in the header navigation. All icon variables should be your username enclosed in quotes (e.g. "username"), except for the following variables:
+
+
+| Variable       | Example                                         | Description                                            | Optional |
+| -------------- | ----------------------------------------------- | ------------------------------------------------------ | -------- |
+| rss            | true                                            | Takes boolean value (true/false) to show RSS feed icon | Yes      |
+| email_address  | type@example.com                                | Email address                                          | Yes      |
+| linkedin       | https://www.linkedin.com/in/FirstLast           | Full URL to profile on LinkedIn                        | Yes      |
+| stack_exchange | https://stackoverflow.com/users/0000/first-last | Full URL to profile on Stack Exchange                  | Yes      |
+
+### Scripts
+
+Change these variables in `_config.yml`:
+
+
+| Variable         | Example      | Description                                                                                                                         | Optional |
+| ---------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| google_analytics | UA-123456-01 | Google Analytics [tracking ID](https://support.google.com/analytics/answer/1032385?hl=en)                                           | Yes      |
+| disqus_shortname | shortname    | Disqus [shortname](https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-)                                     | Yes      |
+| katex            | true         | Takes boolean value (true/false) to conditionally load [KaTeX](https://khan.github.io/KaTeX/) scripts required for math typesetting | Yes      |
+
+Scripts listed here are only loaded if you provide a value in the `_config.yml` file.
+
+### Localization strings
+
+Change localization string variables in `_config.yml`.
+
+English text used in the theme (such as the "continue reading" label) has been grouped  so you can quickly translate the theme or change labels to suit your needs.
+
+### Colours, typography, padding
+
+![A selection of colours set in Type Theme by modifying the CSS](https://cloud.githubusercontent.com/assets/816965/5142488/130869a6-71d7-11e4-8a38-a69ec1673436.png)
+
+
+| Variable     | Example                    | Description                          | Optional                                                     |
+| ------------ | -------------------------- | ------------------------------------ | ------------------------------------------------------------ |
+| google_fonts | "Playfair+Display:400,700\ | PT+Sans:400,700,700italic,400italic" | [Google Fonts](https://www.google.com/fonts) to load for use |
+
+Navigate to the `_sass > base` directory and open `_variables.scss` to change colours, typography and padding used in the theme with CSS.
+
+Once you have loaded a Google Font in `config.yml`, you can integrate the fonts into your CSS by changing the font-family in `_variables.scss`. For example, after loading the Playfair Display and PT Sans fonts from Google:
+
+```css
+// Typography
+$font-family-main: 'PT Sans', Helvetica, Arial, sans-serif;
+$font-family-headings: 'Playfair Display', Helvetica, Arial, sans-serif;
+```
+
+Mozilla's [ColorPicker](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool) is a helpful tool to get your preferred colours in hexadecimal or RGBA form for use in `_variables.scss`.
+
+### Customize style when using the remote_theme
+
+If you're using Type Theme as a `remote_theme`, you can override variables and styles.
+To do so, simply create a `assets/css/main.scss` file on your website with the following content:
+
+```scss
+// assets/css/main.scss
+---
+---
+
+@import "type-theme";
+```
+
+`@import "type-theme";` includes the theme styles, so you can add custom imports before and after it, depending on your needs.
+Best practice is to put your custom files in the `_sass` folder of your project. Jekyll will automatically look for them there.
+For example, say you wanted to override some theme variables and add some custom styles, you can create the following files:
+
+```scss
+// _sass/_variables.scss
+$background-color: black;
+```
+
+```sass
+// _sass/_custom.sass
+
+// SASS is supported as well, just note the file extension is .sass
+.feature-image header
+  height: 300px
+```
+
+Then import them both into `main.scss`:
+
+```scss
+// assets/css/main.scss
+---
+---
+
+@import "variables";
+@import "type-theme";
+@import "custom";
+```
+
+## Posts and pages in Type Theme
+Please refer to the [Jekyll docs for writing posts](https://jekyllrb.com/docs/posts/). Non-standard features are documented below.
+
+### Math typesetting
+Wrap math expressions with `$$` signs in your posts and make sure you have set the `katex` variable in `_config.yml` to `true` for math typesetting.
+
+For inline math typesetting, type your math expression on the *same line* as your content. For example:
+
+```latex
+Type math within a sentence $$2x^2 + x + c$$ to display inline
+```
+
+For display math typesetting, type your math expression on a *new line*. For example:
+
+```latex
+$$
+  \bar{y} = {1 \over n} \sum_{i = 1}^{n}y_i
+$$
+```
+
+Type Theme makes use for [KaTeX](https://khan.github.io/KaTeX/) for typesetting.
+
+### Feature images
+
+![Posts with geometric feature images](https://cloud.githubusercontent.com/assets/816965/5142406/19726478-71d6-11e4-8111-94f788b0e44d.png)
+
+Add a feature image by specifying a path to an image in the [front matter](http://jekyllrb.com/docs/frontmatter/) in the form of `feature-img: "img/PATH_TO_IMAGE.png"`.
+
+For example:
+
+```yml
+---
+layout: post
+title: Hello World
+feature-img: "assets/img/sample_feature_img.png"
+---
+```
+
+By default, the page title is displayed on top of the feature image, as well as on the browser's tab. You can change the feature image's displayed title by specifying a `feature-title` in the front matter:
+
+```yml
+---
+layout: post
+title: Short title
+feature-title: A much longer title
+feature-img: "assets/img/sample_feature_img.png"
+---
+```
+
+### Hiding pages from navigation
+
+In the front matter of a page, add `hide: true` to prevent the page from showing up in the header's navigation bar (visitors can still visit the URL through other means).
+
+For example:
+
+```yml
+---
+layout: page
+title: "Error 404: Page not found"
+permalink: /404.html
+hide: true
+---
+```
+
+### Sorting pages in navigation
+
+You can configure this theme to **sort your pages** in the header's navigation bar.
+
+- Set `site_navigation_sort` in theme settings to a property name e.g. `'order'`
+- In the front matter of a non-hidden page, add `order: n`
+
+For example:
+
+```yml
+---
+layout: page
+title: Team
+permalink: /team/
+order: 4
+---
+```
+
+### Tags
+
+Post tags should be placed between `[]` in your post metadata. Separate each tag with a comma.
+
+For example:
+
+```yml
+---
+layout: post
+title: Markdown and HTML
+tags: [sample, markdown, html]
+---
+```
+
+A tags listing will be automatically generated using the `tags.html` file provided in Type Theme. If you're not using the tags feature it is safe to delete `tags.html`.
+
+### Search
+
+The search feature can be activated in the `_config.yml` file by changing its value from `false` to `true`.
+
+```yml
+  #Scripts
+  search: true
+```
+
+Once activated, the search bar will appear in the header. This feature uses [Lunr](https://lunrjs.com/) and searches through the title, tags and content of your posts.
+
+### Subtitles
+A subtitle can be displayed below your title on permalink post pages.
+
+To enable this feature, add `subtitle` to your post metadata.
+
+For example:
+
+```yml
+---
+layout: post
+title: "This is a title"
+subtitle: "This is a subtitle"
+---
+```
 
 ## License
-All parts of dactl Jekyll theme are free to use and abuse under the open-source [MIT license](http://opensource.org/licenses/mit-license.php).
-
-## TO DO
-- [ ] Inline critical `.css` in `<head>` for faster load times
-- [ ] Fix theme-switcher - sometimes it does not inject all of the colors properly on first page load and a refresh, fixes itself after switching the theme back and forth.
+[The MIT License (MIT)](https://github.com/rohanchandra/type-theme/blob/master/LICENSE)
