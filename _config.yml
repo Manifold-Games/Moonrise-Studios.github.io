@@ -6,8 +6,8 @@ url: "https://Moonrise-Studios.github.io/"
 theme_settings:
   # Meta
   title: Moonrise Studios
-  avatar: assets/img/avatar.png
-  favicon: assets/favicon.ico
+  avatar: assets/img/moon.png
+  favicon: assets/moon.ico
   gravatar: # Email MD5 hash
   description: "A proper description should be written here." # used by search engines
 
