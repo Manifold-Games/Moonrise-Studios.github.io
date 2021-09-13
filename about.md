@@ -9,8 +9,8 @@ We're three dudes from the University of the West of England making video games 
 
 ---
 
-Felix Antonelli - [GitHub](https://github.com/FelixAntonelli)
+**Felix Antonelli** - [GitHub](https://github.com/FelixAntonelli)
 
-Zack Collins - [GitHub](https://github.com/zackcollins)
+**Zack Collins** - [GitHub](https://github.com/zackcollins)
 
-William Whitehouse - [Website](https://williamwhitehouse.dev/) [GitHub](https://github.com/WSWhitehouse)
+**William Whitehouse** - [Website](https://williamwhitehouse.dev/), [GitHub](https://github.com/WSWhitehouse)
