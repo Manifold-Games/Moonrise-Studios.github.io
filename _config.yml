@@ -13,7 +13,9 @@ theme_settings:
 
   # Header and footer text
   header_text: >
-     <p>blurb.</p>
+     <p>We are a small indie games studio based in Bristol, we're currently students at the University of the West of England working on an unannounced VR title scheduled for release in 2022.</p>
+     <p><a href="./about/">Meet the team</a> <a href="./projects/">Checkout the game</a></p>
+
   header_text_feature_image:
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/rohanchandra/type-theme">Type Theme</a>
